@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Basketball</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="Add1">+1</string>
+    <string name="Add2">+2</string>
+    <string name="Add3">+3</string>
+</resources>
