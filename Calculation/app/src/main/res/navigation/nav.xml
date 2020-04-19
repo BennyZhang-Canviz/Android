@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.calculation.TitleFragment"
+        android:label="挑战自我"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_titleFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lostFragment"
+        android:name="com.example.calculation.LostFragment"
+        android:label="失败不可怕，加油再来！"
+        tools:layout="@layout/fragment_lost">
+        <action
+            android:id="@+id/action_lostFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsFragment"
+        android:name="com.example.calculation.QuestionsFragment"
+        android:label="开始答题"
+        tools:layout="@layout/fragment_questions">
+        <action
+            android:id="@+id/action_questionsFragment_to_WinFragment"
+            app:destination="@id/WinFragment" />
+        <action
+            android:id="@+id/action_questionsFragment_to_lostFragment"
+            app:destination="@id/lostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/WinFragment"
+        android:name="com.example.calculation.BlankFragment"
+        android:label="恭喜你，挑战成功！"
+        tools:layout="@layout/fragment_win">
+        <action
+            android:id="@+id/action_WinFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+</navigation>

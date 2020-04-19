@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">挑战自我</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment"></string>
+    <string name="WelcomeTitle">开始闯关，你可以的！</string>
+    <string name="ButtonBegin">开始</string>
+    <string name="HighestScore">最高记录：%d</string>
+    <string name="ButtonClearText">清除</string>
+    <string name="BtnSubmitText">提交</string>
+    <string name="BtnReturn">返回</string>
+    <string name="SucceedMessage">挑战成功，你真棒！</string>
+    <string name="LoseMessage">挑战失败，再来一次</string>
+    <string name="YourScore">你的成绩：%d</string>
+</resources>
