@@ -1,5 +1,7 @@
 package com.example.room.Room
 
+import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 
@@ -20,7 +22,7 @@ data class User(
 @Dao
 interface UserDao{
     @Query("select * from User")
-    fun getAll(): List<User>
+    fun getAll(): LiveData<List<User>>
 
     @Query("select * from User where id in (:userIds)")
     fun loadAllByIds(userIds: IntArray): List<User>
@@ -35,7 +37,7 @@ interface UserDao{
     fun deleteAll()
 
     @Insert()
-    fun insert(user:User)
+    fun insert(user: Array<out User>)
 
     @Update()
     fun update(user:User)
@@ -43,5 +45,12 @@ interface UserDao{
 
 @Database(entities = [User::class],version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){
+
+    //Singleton
+    companion object {
+        fun getInstance(context: Context): AppDatabase =
+            Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "appDB") .allowMainThreadQueries().build()
+    }
+
     abstract fun userDao(): UserDao
 }

@@ -2,42 +2,42 @@ package com.example.room
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.room.Room
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.room.Room.AppDatabase
+import com.example.room.Room.AppViewModel
 import com.example.room.Room.User
 import com.example.room.Room.UserDao
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var userDatabase: AppDatabase
-    lateinit var userDao: UserDao
+    private val appViewModel : AppViewModel by lazy {
+        ViewModelProvider(this)[AppViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        userDatabase = Room.databaseBuilder(this,AppDatabase::class.java,"appDB").allowMainThreadQueries().build()
-        userDao = userDatabase.userDao()
-        updateView()
 
+        appViewModel.getAllUsers().observe(this, Observer {
+            var result: String = ""
+            for(user in it){
+                result += "ID: ${user.id} first name: ${user.firstName} last name: ${user.lastName} age: ${user.age} \n"
+            }
+            textView.text = result
+        })
         btnInsert.setOnClickListener(){
             var user: User  = User("Your first name","Your last name",30)
-            userDao.insert(user)
-            updateView()
+            appViewModel.insert(user)
         }
 
         btnDelete.setOnClickListener(){
-            userDao.deleteAll()
-            updateView()
+            appViewModel.deleteAll()
+
         }
     }
 
-    private fun updateView(){
-        var users: List<User> = userDao.getAll()
-        var result = ""
-        for(user in users){
-            result += "username:${user.firstName} ${user.lastName} age: ${user.age}\n"
-        }
-        textView.text = result
-    }
+
 }
