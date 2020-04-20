@@ -26,7 +26,7 @@ class LostFragment : Fragment() {
     private var param2: String? = null
 
      private val scoreViewMode: ScoreViewModel by lazy {
-        ViewModelProvider(this)[ScoreViewModel::class.java]
+        ViewModelProvider(activity!!)[ScoreViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

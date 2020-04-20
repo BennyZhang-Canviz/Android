@@ -39,7 +39,7 @@ class BlankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        scoreViewMode =  ViewModelProvider(this).get(ScoreViewModel::class.java)
+        scoreViewMode =  ViewModelProvider(activity!!).get(ScoreViewModel::class.java)
         var binding: FragmentWinBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_win,container,false)
         binding.lifecycleOwner = this
         binding.model = scoreViewMode

@@ -25,9 +25,7 @@ class QuestionsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private val scoreViewMode: ScoreViewModel by lazy {
-        ViewModelProvider(this)[ScoreViewModel::class.java]
-    }
+    private lateinit var scoreViewMode: ScoreViewModel
     private var result: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +39,9 @@ class QuestionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.let{
+            scoreViewMode = ViewModelProvider(it)[ScoreViewModel::class.java]
+        }
         scoreViewMode.generate()
         var binding: FragmentQuestionsBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_questions,container,false)
         binding.model = scoreViewMode
