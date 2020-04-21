@@ -1,32 +1,41 @@
 package com.example.room
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.Switch
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.room.Room.AppViewModel
 import com.example.room.Room.User
 
 
-class UserAdapter(var viewModel: AppViewModel) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(private var viewModel: AppViewModel) : ListAdapter<User, UserAdapter.UserViewHolder>(UserItemDiffCallback()) {
 
-    private   var users:List<User> = emptyList()
+
+    class UserItemDiffCallback : DiffUtil.ItemCallback<User>() {
+        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
+
+        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
+
+    }
+
+    //private   var users:List<User> = emptyList()
 
     private var displayCard = false
 
     fun userCardView(userCardView:Boolean){
         displayCard = userCardView
     }
-    fun setUsers(userArray:List<User>){
-        users = userArray
-    }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        var user = users[position]
+        var user = getItem(position)
         holder.tvId.text = user.id.toString()
         holder.tvUsername.text = user.lastName + " " + user.firstName
         holder.tvAge.text = "Age: ${user.age}"
@@ -77,9 +86,7 @@ class UserAdapter(var viewModel: AppViewModel) : RecyclerView.Adapter<UserAdapte
         return holder
     }
 
-    override fun getItemCount(): Int {
-        return users.count()
-    }
+
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvId: TextView = itemView.findViewById(R.id.tvId)

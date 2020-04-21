@@ -27,4 +27,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun findByName(name:String): LiveData<List<User>>{
        return userResponsitory.findByName(name)
     }
+
+    fun delete(user:User)
+    {
+        userResponsitory.deleteUser(user)
+    }
 }

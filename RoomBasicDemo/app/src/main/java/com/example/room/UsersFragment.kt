@@ -3,6 +3,7 @@ package com.example.room
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.text.TextWatcher
 import android.view.*
@@ -15,9 +16,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.room.Room.AppViewModel
 import com.example.room.Room.User
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_users.*
 import kotlin.properties.Delegates
 
@@ -31,6 +37,9 @@ class UsersFragment : Fragment() {
     }
     private lateinit var searchedUsers: LiveData<List<User>>
     private lateinit var  adapter: UserAdapter
+    private lateinit var dividerItemDecoration: DividerItemDecoration
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +48,8 @@ class UsersFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_users, container, false)
     }
+
+    private lateinit var users:List<User>
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.miClear){
@@ -55,10 +66,20 @@ class UsersFragment : Fragment() {
            userCard = !userCard
            adapter.userCardView(userCard)
            rvUsers.adapter = adapter
+            addBorder()
+
             activity?.let { SharedPreferenceHelper(it).setShowCard(userCard) }!!
         }
         return super.onOptionsItemSelected(item)
 
+    }
+
+    private fun addBorder() {
+        if (!userCard) {
+            rvUsers.addItemDecoration(dividerItemDecoration)
+        } else {
+            rvUsers.removeItemDecoration(dividerItemDecoration)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -72,7 +93,7 @@ class UsersFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                searchedUsers.removeObservers(this@UsersFragment)
+                searchedUsers.removeObservers(viewLifecycleOwner)
                 searchedUsers = if (newText != null) {
                     appViewModel.findByName(newText.trim())
                 }else{
@@ -88,10 +109,12 @@ class UsersFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         userCard = activity?.let { SharedPreferenceHelper(it).getShowCard() }!!
+        dividerItemDecoration = DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
         rvUsers.layoutManager = LinearLayoutManager(context)
         adapter = UserAdapter(appViewModel)
         adapter.userCardView(userCard)
         rvUsers.adapter = adapter
+        addBorder()
         searchedUsers = appViewModel.getAllUsers()
         observeUsers(adapter)
 
@@ -99,15 +122,38 @@ class UsersFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_usersFragment_to_addUserFragment)
         }
 
+        var simpleCallback = object: SimpleCallback(0, ItemTouchHelper.START or ItemTouchHelper.END){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+               return false
+            }
 
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                var userToDelete: User = users[viewHolder.adapterPosition]
+                appViewModel.delete(userToDelete)
+                Snackbar.make(activity!!.findViewById(R.id.recyclever_container),"删除了一个用户",Snackbar.LENGTH_LONG)
+                    .setAction("撤销",View.OnClickListener {
+                        appViewModel.insert(userToDelete)
+                    }).show()
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(simpleCallback)
+        touchHelper.attachToRecyclerView(rvUsers)
     }
 
     private fun observeUsers(adapter: UserAdapter) {
         searchedUsers.observe(viewLifecycleOwner, Observer<List<User>>() {
             var temp = adapter.itemCount
-            adapter.setUsers(it)
+            users = it
             if (temp != it.count()) {
-                adapter.notifyDataSetChanged()
+                if(temp < it.count()){
+                    rvUsers.smoothScrollBy(0,-200)
+                }
+                adapter.submitList(it)
             }
 
         })

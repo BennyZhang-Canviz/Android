@@ -14,7 +14,11 @@ class UserReponsitory(context: Context){
         InsertAsyncTask(userDao).execute(user)
     }
     fun deleteAllUsers(){
-        DeleteAsyncTask(userDao).execute()
+        DeleteAllAsyncTask(userDao).execute()
+    }
+
+    fun deleteUser(user:User){
+        DeleteUserAsyncTask(userDao).execute(user)
     }
 
     fun updateUser(user:User){
@@ -36,7 +40,15 @@ class UserReponsitory(context: Context){
         }
     }
 
-    class DeleteAsyncTask(var userDao: UserDao): AsyncTask<Void, Void, Void>() {
+    class DeleteUserAsyncTask(var userDao:UserDao): AsyncTask<User, Void, Void>() {
+
+        override fun doInBackground(vararg params: User?): Void? {
+            userDao.delete(params[0] as User)
+            return null
+        }
+    }
+
+    class DeleteAllAsyncTask(var userDao: UserDao): AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg params: Void?): Void? {
             userDao.deleteAll()
             return null
