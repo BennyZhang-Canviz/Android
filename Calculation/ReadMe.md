@@ -3,6 +3,8 @@ Android Kotlin Jetpack demo.
 ViewModel要在activity中实例化，在Fragment中只需要引用activity中的ViewModel即可。
 另外一个示例： https://github.com/shuza/Shared-ViewModel-sample
 
+//ViewModelProvider(this)[ScoreViewModel::class.java] 这一句中的this决定了view model的作用范围。比如在Fragement中this代表当前fragement, 但是如果把this换成它的父级，则该view model的作用域就成了activity.
+
 1. Activity中引用view model:
     class MainActivity : AppCompatActivity() {
         val scoreViewMode: ScoreViewModel by lazy {
