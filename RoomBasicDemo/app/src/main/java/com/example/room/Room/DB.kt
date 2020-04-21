@@ -3,18 +3,23 @@ package com.example.room.Room
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 
 @Entity
 data class User(
     @ColumnInfo(name = "first_name")
-    val firstName: String,
+    var firstName: String,
 
     @ColumnInfo(name = "last_name")
-    val lastName: String,
+    var lastName: String,
 
     @ColumnInfo(name = "age")
-    val age: Int
+    var age: Int,
+
+    @ColumnInfo(name = "age_available")
+    var showAge: Boolean
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
@@ -36,21 +41,33 @@ interface UserDao{
     @Query("delete  from user")
     fun deleteAll()
 
-    @Insert()
+    @Insert
     fun insert(user: Array<out User>)
 
-    @Update()
-    fun update(user:User)
+    @Update
+    fun update(user:Array<out User>)
 }
 
-@Database(entities = [User::class],version = 1, exportSchema = false)
+@Database(entities = [User::class],version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){
 
     //Singleton
     companion object {
-        fun getInstance(context: Context): AppDatabase =
-            Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "appDB") .allowMainThreadQueries().build()
+
+        fun getInstance(context: Context): AppDatabase {
+            val MIGRATION_1_2 = object : Migration(1, 2) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL("CREATE TABLE `Fruit` (`id` INTEGER, `name` TEXT, " +
+                            "PRIMARY KEY(`id`))")
+                }
+            }
+            return Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "appDB")
+                .addMigrations(MIGRATION_1_2)
+                .build()
+        }
     }
 
     abstract fun userDao(): UserDao
+
+
 }

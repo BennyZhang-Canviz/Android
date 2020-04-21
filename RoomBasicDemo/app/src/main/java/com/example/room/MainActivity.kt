@@ -19,18 +19,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         rvMain.layoutManager = LinearLayoutManager(this)
-        var adapter: UserAdapter = UserAdapter()
+        var adapter: UserAdapter = UserAdapter(appViewModel)
         adapter.userCardView(userCard)
         rvMain.adapter = adapter
 
         appViewModel.getAllUsers().observe(this,Observer<List<User>>{
+            var temp = adapter.itemCount
             adapter.setUsers(it)
-            adapter.notifyDataSetChanged()
+            if(it.count() !=temp){
+                adapter.notifyDataSetChanged()
+            }
+
         })
 
         btnInsert.setOnClickListener(){
             for(index in 1..10){
-                var user: User  = User("Hankers $index","Tom $index",index)
+                var user: User  = User("Hankers $index","Tom $index",index,true)
                 appViewModel.insert(user)
             }
         }

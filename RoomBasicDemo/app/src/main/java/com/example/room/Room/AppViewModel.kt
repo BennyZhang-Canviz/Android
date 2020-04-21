@@ -18,4 +18,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteAll(){
         userResponsitory.deleteAllUsers()
     }
+
+    fun update(user: User)
+    {
+        userResponsitory.updateUser(user)
+    }
 }

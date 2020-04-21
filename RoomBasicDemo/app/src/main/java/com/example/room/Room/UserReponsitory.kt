@@ -16,6 +16,10 @@ class UserReponsitory(context: Context){
         DeleteAsyncTask(userDao).execute()
     }
 
+    fun updateUser(user:User){
+        UpdateAsyncTask(userDao).execute(user)
+    }
+
      class InsertAsyncTask(userDao: UserDao): AsyncTask<User, Void, Void>() {
         private val _userDao= userDao
         override fun doInBackground(vararg user: User): Void? {
@@ -31,6 +35,16 @@ class UserReponsitory(context: Context){
             userDao.deleteAll()
             return null
         }
+    }
+
+    class UpdateAsyncTask(private var userDao: UserDao): AsyncTask<User,Void,Void>(){
+        override fun doInBackground(vararg user: User): Void? {
+            if (user != null) {
+                userDao.update(user)
+            }
+            return null
+        }
+
     }
 
 }
