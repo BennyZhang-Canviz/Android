@@ -32,8 +32,8 @@ interface UserDao{
     @Query("select * from User where id in (:userIds)")
     fun loadAllByIds(userIds: IntArray): List<User>
 
-    @Query("select * from user where first_name like :firstName and last_name like :lastName limit 1")
-    fun findByName(firstName: String, lastName: String): List<User>
+    @Query("select * from user where first_name like :name or last_name like :name ")
+    fun findByName(name: String ): LiveData<List<User>>
 
     @Delete()
     fun delete(user: User)

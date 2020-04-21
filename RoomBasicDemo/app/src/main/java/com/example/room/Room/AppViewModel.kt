@@ -23,4 +23,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     {
         userResponsitory.updateUser(user)
     }
+
+    fun findByName(name:String): LiveData<List<User>>{
+       return userResponsitory.findByName(name)
+    }
 }

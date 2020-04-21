@@ -9,6 +9,7 @@ class UserReponsitory(context: Context){
     var userDao: UserDao = AppDatabase.getInstance(context).userDao()
     var allUsers: LiveData<List<User>> = userDao.getAll()
 
+
     fun insert(user: User){
         InsertAsyncTask(userDao).execute(user)
     }
@@ -19,6 +20,11 @@ class UserReponsitory(context: Context){
     fun updateUser(user:User){
         UpdateAsyncTask(userDao).execute(user)
     }
+
+    fun findByName(name:String): LiveData<List<User>>  {
+       return userDao.findByName("%$name%")
+    }
+
 
      class InsertAsyncTask(userDao: UserDao): AsyncTask<User, Void, Void>() {
         private val _userDao= userDao
