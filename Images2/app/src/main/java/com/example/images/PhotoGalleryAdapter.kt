@@ -15,6 +15,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.photo_cell.view.*
+import kotlinx.android.synthetic.main.photo_view.view.*
 
 class PhotoGalleryAdapter : ListAdapter<PhotoItem, PhotoViewHolder>(DIFFCALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
@@ -36,6 +37,9 @@ class PhotoGalleryAdapter : ListAdapter<PhotoItem, PhotoViewHolder>(DIFFCALLBACK
             setShimmerAngle(0)
             startShimmerAnimation()
         }
+        var photItem =  getItem(position)
+        holder.itemView.fg_cell_imageView.layoutParams.height = photItem.photoHeight
+        holder.itemView.pc_textUsername.text = "${photItem.user}/${photItem.favorites}"
         Glide.with(holder.itemView)
             .load(getItem(position).previewURL)
             .placeholder(R.drawable.ic_image_green_24dp)
