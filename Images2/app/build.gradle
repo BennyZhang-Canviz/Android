@@ -7,7 +7,9 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-
+    kotlinOptions{
+        jvmTarget = 1.8
+    }
     defaultConfig {
         applicationId "com.example.images"
         minSdkVersion 26
@@ -48,11 +50,14 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha01'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha01'
+    //implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha01'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'io.supercharge:shimmerlayout:2.1.0'
     implementation 'com.github.chrisbanes.photoview:library:1.2.4'
-    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.paging:paging-runtime-ktx:2.1.1'
+
+
 }

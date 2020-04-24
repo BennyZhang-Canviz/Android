@@ -19,7 +19,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.fragment_pager_photo.*
-import kotlinx.android.synthetic.main.fragment_pager_photo.view.*
 import kotlinx.android.synthetic.main.photo_view.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -44,7 +43,7 @@ class PagerPhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fpp_photoTag.text = "Loading..."
-        var photos: ArrayList<PhotoItem>? = arguments?.getParcelableArrayList("photos")
+        var photos: ArrayList<PhotoEntity>? = arguments?.getParcelableArrayList("photos")
         PagerPhotoAdapter().apply {
             fpp_photoViewPager.adapter = this
             submitList(photos)

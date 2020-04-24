@@ -6,9 +6,11 @@ import android.os.Handler
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
@@ -17,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_gallery.*
  */
 class GalleryFragment : Fragment() {
 
-    private lateinit var viewModel:GalleryViewModel
+    private val viewModel by viewModels<GalleryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,16 +39,32 @@ class GalleryFragment : Fragment() {
             layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         }
 
-        viewModel = ViewModelProvider(this)[GalleryViewModel::class.java]
         viewModel.photos.observe(viewLifecycleOwner, Observer {
             photoGalleryAdapter.submitList(it)
             fg_swipeRefreshLayout.isRefreshing = false
         })
-        viewModel.photos.value?:viewModel.loadImages()
+        //下面这句是让recylerview滚动到最顶部
+        //fg_recyclerView.scrollToPosition(0)
+
 
         fg_swipeRefreshLayout.setOnRefreshListener {
             viewModel.loadImages()
         }
+
+//        fg_recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                if(dy<0) return
+//                if(dy>0){
+//                   var manager = recyclerView.layoutManager as StaggeredGridLayoutManager
+//                    var positionArray = IntArray(2)
+//                    manager.findLastVisibleItemPositions(positionArray)
+//                    if(positionArray[0]==photoGalleryAdapter.itemCount-1 ){
+//                        //在这就要去加载另外一页的内容了
+//                    }
+//                }
+//            }
+//        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

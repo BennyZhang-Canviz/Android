@@ -8,17 +8,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.photo_view.view.*
-import java.util.zip.Inflater
 
-class PagerPhotoAdapter : ListAdapter<PhotoItem,PagerPhotoViewHolder>(Diff) {
+class PagerPhotoAdapter : ListAdapter<PhotoEntity,PagerPhotoViewHolder>(Diff) {
 
-    object Diff:DiffUtil.ItemCallback<PhotoItem>(){
-        override fun areItemsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem === newItem
+    object Diff:DiffUtil.ItemCallback<PhotoEntity>(){
+        override fun areItemsTheSame(oldItem: PhotoEntity, newItem: PhotoEntity): Boolean {
+            return oldItem.photoId == newItem.photoId
         }
 
-        override fun areContentsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
-            return oldItem.photoId == newItem.photoId
+        override fun areContentsTheSame(oldItem: PhotoEntity, newItem: PhotoEntity): Boolean {
+            return oldItem == newItem
         }
 
     }
