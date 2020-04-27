@@ -26,13 +26,13 @@ class PlantAdapter : ListAdapter<Plant,RecyclerView.ViewHolder>(PlantDiffCallbac
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var plant = getItem(position)
-//        holder.itemView.setOnClickListener(){
-//            Bundle().apply {
-//                putString("plantId",plant.plantId)
-//                holder.itemView.findNavController().navigate(com.example.sunflower.R.id.action_homeViewFragment_to_plantDetailFragment,this)
-//            }
-//
-//        }
+        holder.itemView.setOnClickListener(){
+            Bundle().apply {
+                putString("plantId",plant.plantId)
+                holder.itemView.findNavController().navigate(com.example.sunflower.R.id.action_homeViewFragment_to_plantDetailFragment,this)
+            }
+
+        }
         (holder as PlantViewHolder).bind(plant)
     }
 }
