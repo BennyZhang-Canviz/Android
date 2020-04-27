@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Padding on the bottom of a screen so that the FAB won't overlap scrolled text. -->
+
+    <!-- elevation for Plant Detail toolbar - used to convert to pixels when hiding/showing -->
+
+    <!-- Plant List Header margin -->
+
+    <!-- minimum height of plant detail page so that the collapsing toolbar can be shown on every page -->
+</resources>
