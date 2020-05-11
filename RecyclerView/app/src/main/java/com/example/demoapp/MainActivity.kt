@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
 
         var users = ArrayList<User>()
-        for(i in 0..100){
+        for(i in 0..10){
             var viewType = if(i%2==0) 0 else 1
             val user = User(address = "Beijing$i", username = "Tom$i" , viewType = viewType)
             users.add(user)
@@ -27,16 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         rvDemo.adapter = MainAdapter(users,this)
         //使用LinearLayoutManager
-        //var layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        var layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
 
         //使用GridLayoutManager
-       var layoutManager = GridLayoutManager(this,2)
+       //var layoutManager = GridLayoutManager(this,2)
 
         rvDemo.layoutManager = layoutManager
 
+        //添加分隔线
         var decoration = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
         //自定义颜色
         ContextCompat.getDrawable(this, R.drawable.decoratoin)?.let { decoration.setDrawable(it) }
-        rvDemo.addItemDecoration(decoration);
+        rvDemo.addItemDecoration(decoration)
+
     }
 }

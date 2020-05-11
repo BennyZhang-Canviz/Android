@@ -60,6 +60,11 @@ class MainAdapter(var users: ArrayList<User>,var context:Context) : RecyclerView
                 holder.tvUsername.text = user.username
                 holder.tvUsername.setOnClickListener(){
                     Toast.makeText(context,user.username,Toast.LENGTH_LONG).show()
+                    users.add(position,User(username = "Jerry", address = "City",viewType = 1))
+                    notifyItemInserted(position)
+                    //notifyItemRemoved(position)
+                    //notifyItemChanged(int position)
+
                 }
             }
             is SimpleHolder ->{
