@@ -1,4 +1,4 @@
-本示例演示如何在RecyclerView中展示不同的布局文件。<br/>
+本示例演示如何在RecyclerView中展示不同的布局文件，以及分隔线。<br/>
 参考文章：<br/>
 https://blog.csdn.net/m0_37796683/article/details/103711941<br/>
 https://zocada.com/android-creating-custom-recyclerview-adapter-multiple-view-items/<br/>

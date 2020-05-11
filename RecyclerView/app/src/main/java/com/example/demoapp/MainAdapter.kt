@@ -88,28 +88,4 @@ class MainAdapter(var users: ArrayList<User>,var context:Context) : RecyclerView
 
 
 
-//class MainAdapter(private val mDataList: ArrayList<User>): Adapter<MainAdapter.UserViewHolder>() {
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-//        var view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_layout,parent,false)
-//        return UserViewHolder(view)
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return mDataList.size
-//    }
-//
-//    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-//        var user  = mDataList[position]
-//        holder.tvAddress.text = user.address
-//        holder.tvUsername.text = user.username
-//    }
-//    inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        internal var tvUsername: TextView
-//        internal var tvAddress: TextView
-//        init {
-//            tvUsername = itemView.findViewById<View>(R.id.tvUsername) as TextView
-//            tvAddress = itemView.findViewById<View>(R.id.tvAddress) as TextView
-//        }
-//    }
-//}
 

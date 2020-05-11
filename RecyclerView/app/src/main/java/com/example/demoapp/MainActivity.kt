@@ -3,6 +3,8 @@ package com.example.demoapp
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,50 +26,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         rvDemo.adapter = MainAdapter(users,this)
+        //使用LinearLayoutManager
         //var layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+
+        //使用GridLayoutManager
        var layoutManager = GridLayoutManager(this,2)
 
         rvDemo.layoutManager = layoutManager
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        var users = ArrayList<User>()
-//        for(i in 0..10){
-//            val user = User(address = "Beijing$i", username = "Tom$i" )
-//            users.add(user)
-//        }
-//
-//
-//        var layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-//        rvDemo.layoutManager = layoutManager
-//        rvDemo.adapter = MainAdapter(users)
-
+        var decoration = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
+        //自定义颜色
+        ContextCompat.getDrawable(this, R.drawable.decoratoin)?.let { decoration.setDrawable(it) }
+        rvDemo.addItemDecoration(decoration);
     }
 }
