@@ -1,4 +1,4 @@
-![](.\images\image001.png 'image')
+![](images/image001.png 'image')
 <br><br>
 # PowerApps canvas app coding standards and guidelines
 
