@@ -26,21 +26,21 @@ Update all necessary context variables in a single UpdateContext call. In this w
 
 For example, use this call to update several context variables.
 
-![Image](.\images\image025.jpg )
+![Image](images/image025.jpg )
 
 Don&#39;t use these separate calls.
 
-![Image](.\images\image026.jpg )
+![Image](images/image026.jpg )
 
 #### Global Variables
 
 Don&#39;t use multiple variables when you can use just one. Here&#39;s an example of multiple variables.
 
-![Image](.\images\image027.jpg )
+![Image](images/image027.jpg )
 
 Instead, you can use just one variable, as shown here.
 
-![Image](.\images\image028.png )
+![Image](images/image028.png )
 
 #### Collections
 
@@ -48,7 +48,7 @@ Limit your use of collections. Try to use them only when they&#39;re absolutely 
 
 Use ClearCollect instead of Clear;Collect.
 
-![Image](.\images\image029.png )
+![Image](images/image029.png )
 
 To count the records in a local collection, use CountIf instead of Count(Filter()).
 
@@ -58,4 +58,4 @@ Avoid using unnecessary DataCards and canvases, especially if they have nested g
 
 Avoid nesting in other operators too, such as the ForAll function.
 
-![Image](.\images\image030.jpg )
+![Image](images/image030.jpg )

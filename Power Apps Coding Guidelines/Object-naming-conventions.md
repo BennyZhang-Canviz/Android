@@ -17,7 +17,7 @@ Here are some good examples:
 - Home Screen
 - Thrive Help Screen
 
-![Image](.\images\image002.png )
+![Image](images/image002.png )
 
 Here are some bad examples:
 
@@ -71,7 +71,7 @@ Here are some bad examples:
 
 As the following image shows, if you consistently name your controls, your app will be much cleaner in the navigation view, and your code will be much cleaner too.
 
-![Image](.\images\image003.png )
+![Image](images/image003.png )
 
 ### Data source names
 
@@ -88,7 +88,7 @@ For more information about connectors and connections, see the [Overview of canv
 
 In Standard action connectors that expose functions, such as LinkedIn, you&#39;ll see that the data source name and its operations use Pascal casing (that is, UpperUpperUpper). For example, the LinkedIn data source is named LinkedIn and has an operation named ListCompanies.
 
-![Image](.\images\image004.jpg)
+![Image](images/image004.jpg)
 
 #### Custom connectors
 
@@ -96,15 +96,15 @@ Custom connectors can be created by any maker in your environment. They&#39;re u
 
 For example, here&#39;s a custom connector named **MS Auction Item Bid API**.
 
-![Image](.\images\image005.jpg)
+![Image](images/image005.jpg)
 
 But when you create a connection from this connector and add it to your PowerApps app as a data source, it appears as **AuctionItemBidAPI**.
 
-![Image](.\images\image006.jpg)
+![Image](images/image006.jpg)
 
 To discover the reason, you can look inside the OpenAPI file. There, you&#39;ll see a title attribute that contains the text Auction Item Bid API.
 
-![Image](.\images\image007.jpg)
+![Image](images/image007.jpg)
 
 PowerApps removes all the spaces from this attribute value and uses it as the name of your data source. We recommend that you change the value of this attribute to a Pascal-cased name such as AuctionItemBidAPI and use it as the name of your custom connection. In that way, there will be no confusion. Change this value before you import the OpenAPI file to create the custom connector.
 

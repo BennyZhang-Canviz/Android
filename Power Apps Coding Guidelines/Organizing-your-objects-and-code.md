@@ -4,7 +4,7 @@
 
 All controls on a screen should belong to a group, so that you can easily recognize their purpose, move them around a screen or between screens, or collapse them to simplify your view. Gallery, Form, and Canvas controls are already groups, but they can also, optionally, be part of another group to help improve organization.
 
-![Image](.\images\image008.png )
+![Image](images/image008.png )
 
 Optionally, you can use the experimental [enhanced Group control](https://powerapps.microsoft.com/en-us/blog/enhanced-group-experimental-control-with-layout-control-and-nesting/), which allows for nesting of groups, group-level settings, keyboard navigation, and more.
 
@@ -12,14 +12,14 @@ Optionally, you can use the experimental [enhanced Group control](https://powera
 
 As the complexity of a formula increases, readability and maintainability are affected. It can be very difficult to read a large block of code that contains multiline functions. The **Format text** feature adds line breaks and indentation to make your formula easier to read. As for code comments, the extra white space is removed from the app package that&#39;s downloaded to the client. Therefore, there&#39;s no need to use the **Remove formatting** feature before you publish your app.
 
-![Image](.\images\image009.png )
-![Image](.\images\image010.png )
+![Image](images/image009.png )
+![Image](images/image010.png )
 
 ### Minimizing the number of controls that you create
 
 To minimize complexity, try to limit the number of controls in your apps. For example, instead of having four image controls that lie on top of each other and have different Visible property settings, use one image that includes logic in its Image property to show different images.
 
-![Image](.\images\image012.png )
+![Image](images/image012.png )
 
 ### Finding the best place for your code
 
@@ -33,11 +33,11 @@ Whenever possible, try not to distribute your code across screens, so that all t
 
 Here&#39;s the Navigate function in the gallery&#39;s OnSelect property for this example.
 
-![Image](.\images\image013.jpg )
+![Image](images/image013.jpg )
 
 Then, in the OnVisible property of the **User Profile** screen, call Office365Users.UserProfileV2 by using the user ID that was received from the previous screen. Subsequent code then uses the other context variables that were passed.
 
-![Image](.\images\image014.jpg )
+![Image](images/image014.jpg )
 
 **Note:** The previous example passes ThisItem values as context variables instead of having the next screen refer to the Selected property of the previous screen. This approach was used deliberately, because this app has multiple paths to the **User Profile** screen from other screens that include galleries. The screen is now encapsulated and can easily be reused in this app and other apps.
 
@@ -49,11 +49,11 @@ Here are the recommended uses for OnStart:
 
 - **Screen routing** : Unlike the OnVisible property, you can use the Navigate function in the OnStart property. Therefore, it can be a handy place to make routing decisions. For example, you can evaluate a parameter named mode to determine which screen to show.
 
-  ![Image](.\images\image015.jpg )
+  ![Image](images/image015.jpg )
 
 - **Impersonation or debug privileges** : You can create code in the OnStart property to check whether the current user is on a list of email addresses and, if the user is on the list, turn on a debug mode that shows hidden screens and text input controls.
 
-  ![Image](.\images\image016.jpg )
+  ![Image](images/image016.jpg )
 
   **Note:** You can also check Azure Active Directory (AAD) group membership to apply security settings to your apps.
 <br>
@@ -77,7 +77,7 @@ Timers present interesting possibilities for event-based code execution. Typical
 
 For example, if you want to have a form that lets the user switch an auto-save feature on and off, you can create a toggle control that&#39;s named tglAutoSave. A timer on the screen then has its Start property set to tglAutoSave.Value, and code in the OnTimerStart property can save the data.
 
-![Image](.\images\image017.jpg )
+![Image](images/image017.jpg )
 
 the OnTimerStart property, you can also put code that uses the ClearCollect function to reload data at a specified refresh interval.
 
@@ -90,15 +90,15 @@ This pattern comes with two caveats:
 <be>
   For example, you have a timer control on a loader screen. You set the control&#39;s Start property to locRedirect, a Boolean context variable, and you put the following navigation code in the OnTimerStart property.
 
-  ![Image](.\images\image018.png )
+  ![Image](images/image018.png )
 
   The OnVisible property of the loader screen retrieves the employee ID and sets locRedirect to false if the ID isn&#39;t numeric (because non-numeric employee IDs are error conditions).
 
-  ![Image](.\images\image019.png )
+  ![Image](images/image019.png )
 
   When locRedirect is set to true, the timer control&#39;s OnStart code runs, but there&#39;s a slight delay, during which code in the OnVisible property continues to run. Therefore, do an additional error check for the next few lines of code.
 
-  ![Image](.\images\image020.png )
+  ![Image](images/image020.png )
 
 #### OnSelect property
 
@@ -116,22 +116,22 @@ Although the initialization code can also reside in the OnStart or OnVisible pro
 
 **Caution:** If you use the Select function in the OnVisible property to select a control, and that control then uses a Navigate function to go to another screen, it might not be possible to edit the screen. To avoid this situation, use a toggle control on a hidden settings screen in the app. Then check the state of this toggle in the OnSelect property before you call the Navigate function.
 
-![Image](.\images\image021.png )
+![Image](images/image021.png )
 
 ### Other tips for organization
 
 - Don&#39;t &quot;nest&quot; secondary logical tests by explicitly writing If after the initial statement.
 
-  ![Image](.\images\image022.jpg )
+  ![Image](images/image022.jpg )
 
 - To write secondary logical tests, just write the logical test, without explicitly writing If.
 
-  ![Image](.\images\image023.jpg )
+  ![Image](images/image023.jpg )
 
 - Avoid lengthy expressions whenever possible.
 - To manually format your code, follow these guidelines:
   - Each semicolon should represent a line break.
 
-    ![Image](.\images\image023.jpg )
+    ![Image](images/image023.jpg )
 
   - For long single-line formulas, try to insert line breaks in reasonable places: before and after parentheses, commas, and colons.

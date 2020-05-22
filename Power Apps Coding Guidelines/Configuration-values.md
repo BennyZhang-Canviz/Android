@@ -18,15 +18,15 @@ A surprisingly easy way of setting configuration values is just to create a hidd
 
 The following example is from the Microsoft PowerApps Company Pulse sample template. Here, you can see text input controls that let the PowerApps admin configure application setting values.
 
-![Image](.\images\image039.jpg )
+![Image](images/image039.jpg )
 
 Here, you can see the name of the control that stores the Twitter account settings value.
 
-​![Image](.\images\image040.jpg )
+​![Image](images/image040.jpg )
 
 Here, you can see where the value is used to return tweets for the Twitter account from the Twitter connector.
 
-![Image](.\images\image041.jpg )
+![Image](images/image041.jpg )
 
 Although this approach is the easiest way of changing values, it does have some downsides:
 

@@ -23,7 +23,7 @@ We recommend that you create screens to document the collections and variables t
 
 Here&#39;s an example from the Microsoft PowerApps Company Pulse sample template.
 
-![Image](.\images\image044.png )
+![Image](images/image044.png )
 
 © 2018 Microsoft Corporation. All rights reserved.
 

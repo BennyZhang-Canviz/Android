@@ -12,7 +12,7 @@ PowerApps runs your data source calls from top to bottom in a module. If you hav
 
 The [Concurrent function](https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-concurrent) eliminates the need to use timer controls to make multiple data calls at the same time. The following code snippet replaces several API calls that used to reside in the OnTimerStart property of timer controls in the app. This approach is much easier to maintain.
 
-![Image](.\images\image031.png )
+![Image](images/image031.png )
 
 To fire these calls, you can put them in the OnVisible property. Alternatively, if that approach becomes too messy, you can put the calls in a timer control, and set the variable referenced in the timer&#39;s Start property either in the OnVisible property or in the OnSelectproperty of a hidden control. You can also combine timers with other controls to show a loading message while the code in the OnVisible property run. This approach is a great way to let your users know that the app is doing something. For more information, see the [Finding the best place for your code](#_Finding_the_best) section earlier in this white paper.
 
@@ -71,15 +71,15 @@ Some of your data or API calls will be expensive or time-consuming. Long executi
 
 Here&#39;s a bad example in an OnSelect property that goes to the next page.
 
-![Image](.\images\image032.png )
+![Image](images/image032.png )
 
 Here&#39;s a better example. First, here&#39;s the code in the OnSelect property.
 
-![Image](.\images\image033.png )
+![Image](images/image033.png )
 
 And here&#39;s the code in the OnVisible property in the next page.
 
-![Image](.\images\image034.png )
+![Image](images/image034.png )
 
 ### Limiting the package size
 
@@ -101,4 +101,4 @@ The PowerApps product group offers preview features that makers can optionally t
 
 _Use these features at your own risk, and be sure to test your apps thoroughly when you experiment with these features._
 
-![Image](.\images\image035.jpg )
+![Image](images/image035.jpg )

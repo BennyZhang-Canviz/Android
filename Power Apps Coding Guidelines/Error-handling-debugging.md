@@ -6,7 +6,7 @@ In the [OnTimerStart property](#_OnTimerStart_pProperty) section, we demonstrate
 
 The following illustration shows this approach.
 
-![Image](.\images\image042.png )
+![Image](images/image042.png )
 
 In this approach, logic for validation and/or error handling can be encapsulated inside a single control. The Toggle control can evaluate complex conditions and issue a true or false value. Other controls can then reference that value to show/hide error messages, change font or border colors, make buttons unavailable, log to Application Insights, and much more. If you make this control visible and editable, the app maker can switch the error condition on and off to watch the user interface (UI) react. This approach can save time and effort when you develop or debug the app.
 
@@ -22,7 +22,7 @@ You don&#39;t want to show your debug controls to all your users. Therefore, you
 
 One elegant approach is to add the PowerApps for Makers connector. Despite the name, this connector can be used by non-makers for read-only calls. Then call the [GetAppRoleAssignments function](https://docs.microsoft.com/en-us/connectors/powerappsforappmakers/#get-app-role-assignments) to determine whether the signed-in user is a maker for the current app.
 
-![Image](.\images\image043.jpg )
+![Image](images/image043.jpg )
 
 For this example, you&#39;ll then set the Visible property of your debug controls to gloIsMaker, so that those controls appear only to app users who have maker permissions.
 

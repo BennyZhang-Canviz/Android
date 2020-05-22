@@ -4,7 +4,7 @@
 
 We recommend that you use one control&#39;s style as the basis for styling other controls. In general, use relative styling for the color, fill, x, y, width, and height properties.
 
-![Image](.\images\image036.png )
+![Image](images/image036.png )
 
 ### Galleries
 
@@ -14,7 +14,7 @@ The &quot;brute force&quot; (manual placement of multiple controls) method might
 
 If you must present a series of information or controls that seem repetitive, always consider whether you might be able to create an internal collection by using a gallery.
 
-​ ![Image](.\images\image037.jpg )
+​ ![Image](images/image037.jpg )
 
 It&#39;s also useful to use a Gallery control as a view form, instead of using a Display Form control.
 
@@ -44,7 +44,7 @@ Forms also let you quickly group several fields instead of having to use several
 
 A form is much easier to work with than individual text boxes, because forms let you to take advantage of parent/child relationships to implement relative styling.
 
-![Image](.\images\image038.jpg )
+![Image](images/image038.jpg )
 
 ### Common Data Service for Apps
 
