@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">记事本</string>
+    <string name="client_id">380716432994-ks7su31njreodck8fbermhpefhu6nt6n.apps.googleusercontent.com</string>
+    <string name="title_empty_message">请输入标题</string>
+    <string name="AreYouSure">你确定？</string>
+    <string name="DeleteAllMessage">小心点，删除了是恢复不了滴，神仙也救不了。</string>
+    <string name="Yes">忍心删了吧</string>
+    <string name="No">当然留着</string>
+    <string name="DeleteNoteMessage">小心点，删除了是恢复不了滴，神仙也救不了。</string>
+    <string name="Search">搜索</string>
+    <string name="input_your_note_title">请输入标题</string>
+    <string name="input_your_note_content">请输入内容</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="delete_all">全删除</string>
+    <string name="are_you_sure_not_save">还没保存，确定要退出编辑吗？</string>
+    <string name="about">关于本应用</string>
+    <string name="about_detail">记事本1.0版，更多功能敬请期待。</string>
+    <string name="CreatedTooltip">创建时间:</string>
+    <string name="ModifiedTooltip">修改时间：</string>
+
+</resources>
