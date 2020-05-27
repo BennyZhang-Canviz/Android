@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dictionary1">
+    <fragment
+        android:id="@+id/navigation_dictionary1"
+        android:name="com.zsx.dictionary.ui.dictionary1.Dictionary1Fragment"
+        android:label="@string/title_dictionary1"
+        tools:layout="@layout/fragment_dictionary1" />
+
+    <fragment
+        android:id="@+id/navigation_dictionary2"
+        android:name="com.zsx.dictionary.ui.dictionary2.Dictionary2Fragment"
+        android:label="@string/title_dictionary2"
+        tools:layout="@layout/fragment_dictionary2" />
+
+    <fragment
+        android:id="@+id/navigation_saying"
+        android:name="com.zsx.dictionary.ui.saying.SayingFragment"
+        android:label="@string/title_saying"
+        tools:layout="@layout/fragment_saying" />
+    <fragment
+        android:id="@+id/navigation_dictionary3"
+        android:name="com.zsx.dictionary.ui.dictionary3.Dictionary3Fragment"
+        android:label="@string/title_dictionary3"
+        tools:layout="@layout/fragment_dictionary3" />
+</navigation>

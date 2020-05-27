@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">字典</string>
+    <string name="title_dictionary1">新华字典</string>
+    <string name="title_dictionary2">成语词典</string>
+    <string name="title_dictionary3">辞海</string>
+    <string name="title_saying">名人名言</string>
+    <string name="search">搜索</string>
+    <string name="saying_hint">请输入名人名言关键字搜索</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

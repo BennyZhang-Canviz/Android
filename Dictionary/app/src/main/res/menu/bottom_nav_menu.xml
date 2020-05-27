@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_dictionary1"
+        android:icon="@drawable/ic_dict"
+        android:title="@string/title_dictionary1" />
+    <item
+        android:id="@+id/navigation_dictionary2"
+        android:icon="@drawable/ic_dict2"
+
+        android:title="@string/title_dictionary2" />
+    <item
+        android:id="@+id/navigation_dictionary3"
+        android:icon="@drawable/ic_dict3"
+        android:title="@string/title_dictionary3" />
+    <item
+        android:id="@+id/navigation_saying"
+        android:icon="@drawable/ic_person"
+        android:title="@string/title_saying" />
+</menu>

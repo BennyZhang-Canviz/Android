@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+<variable
+    name="dictionary1"
+    type="com.zsx.dictionary.entity.Dictionary1Entity" />
+    </data>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TableRow style="@style/dictionary1_row_style">
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/dictionary1_item_title_style"
+                android:text="汉字：" />
+
+            <TextView
+                style="@style/dictionary1_item_content_style"
+                android:text="@{dictionary1.hanzi}"
+                tools:text="" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+
+                style="@style/dictionary1_item_title_style"
+                android:text="拼音：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  android:text="@{dictionary1.pinyin}"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/dictionary1_item_title_style"
+                android:text="读音：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  android:text="@{dictionary1.duyin}"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/dictionary1_item_title_style"
+                android:text="部首：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  android:text="@{dictionary1.bushou}"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/dictionary1_item_title_style"
+                android:text="笔画：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  android:text="@{ Integer.toString(dictionary1.bihua)}"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/dictionary1_item_title_style"
+                android:text="简介：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  app:renderHtml="@{dictionary1.jianjie}"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/dictionary1_item_title_style"
+                android:text="详情：" />
+
+            <TextView style="@style/dictionary1_item_content_style"  app:renderHtml="@{dictionary1.xiangjie}"/>
+        </TableRow>
+
+    </TableLayout>
+
+</layout>
