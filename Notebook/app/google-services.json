@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "380716432994",
+    "firebase_url": "https://notebook-888.firebaseio.com",
+    "project_id": "notebook-888",
+    "storage_bucket": "notebook-888.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380716432994:android:73b1cb481e7e2950ae5b3b",
+        "android_client_info": {
+          "package_name": "com.example.notebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380716432994-ks7su31njreodck8fbermhpefhu6nt6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEHwC55qA_5Aaq4kIafu-I_p0tAyOI2EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380716432994-ks7su31njreodck8fbermhpefhu6nt6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
