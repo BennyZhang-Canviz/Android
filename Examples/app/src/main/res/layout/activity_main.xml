@@ -23,4 +23,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Work manager example" />
+    <Button
+        android:id="@+id/btnLoading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loading example" />
+
+    <Button
+        android:id="@+id/btnLottie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lottie example" />
 </LinearLayout>

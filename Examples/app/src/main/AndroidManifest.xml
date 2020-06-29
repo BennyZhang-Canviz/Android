@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WorkManagerActivity"></activity>
+        <activity android:name=".LottieActivity"></activity>
+        <activity android:name=".loading.LoadingActivity" />
+        <activity android:name=".WorkManagerActivity" />
         <activity android:name=".HandlerWeakReferenceActivity" />
         <activity android:name=".adapterexample.AdapterActivity" />
         <activity android:name=".MainActivity">
